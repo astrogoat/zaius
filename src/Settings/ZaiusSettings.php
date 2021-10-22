@@ -21,12 +21,12 @@ class ZaiusSettings extends AppSettings
         return ['private_key'];
     }
 
-    public function description() : string
+    public function description(): string
     {
         return 'With flexible integrations, predictive insights, and personalized marketing campaigns, Zaius is a CDP built to activate your data.';
     }
 
-    public function sections() : array
+    public function sections(): array
     {
         return [
             [
@@ -36,7 +36,7 @@ class ZaiusSettings extends AppSettings
             [
                 'title' => 'Newsletter',
                 'properties' => ['newsletter_list_id'],
-            ]
+            ],
         ];
     }
 }

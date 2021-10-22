@@ -2,9 +2,9 @@
 
 namespace Astrogoat\Zaius\Tests;
 
+use Astrogoat\Zaius\ZaiusServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Astrogoat\Zaius\ZaiusServiceProvider;
 
 class TestCase extends Orchestra
 {

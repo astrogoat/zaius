@@ -2,12 +2,12 @@
 
 namespace Astrogoat\Zaius;
 
+use Astrogoat\Zaius\Settings\ZaiusSettings;
 use Helix\Lego\Apps\App;
 use Helix\Lego\LegoManager;
 use Helix\Zaius\Zaius as HelixZaius;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Astrogoat\Zaius\Settings\ZaiusSettings;
 
 class ZaiusServiceProvider extends PackageServiceProvider
 {
