@@ -2,6 +2,7 @@
 
 namespace Astrogoat\Zaius;
 
+use Astrogoat\Zaius\Promobar\Types\ZaiusType;
 use Astrogoat\Zaius\Settings\ZaiusSettings;
 use Helix\Lego\Apps\App;
 use Helix\Lego\LegoManager;
@@ -29,9 +30,11 @@ class ZaiusServiceProvider extends PackageServiceProvider
     public function registeringPackage()
     {
         $this->callAfterResolving('lego', function (LegoManager $lego) {
-            $lego->registerApp(function (App $app) {
-                return $this->registerApp($app);
-            });
+            $lego->registerApp(fn (App $app) => $this->registerApp($app));
+        });
+
+        $this->callAfterResolving('Astrogoat\\Promobar\\Promobar', function ($promobar) {
+            $promobar->addType('zaius', ZaiusType::class);
         });
     }
 
