@@ -71,9 +71,9 @@
 
 <div class="zaius-promobar">
     <div class="zaius-promobar__content container flex @if($payload['center_align_content'] ?? false) justify-center @endif">
-        <div class="flex md:hidden">{!! $payload['content_mobile'] !!}</div>
-        <div class="hidden md:flex">{!! $payload['content_desktop'] !!}</div>
-        @if($payload['zaius_content_id'])
+        <div class="flex md:hidden">{!! $payload['content_mobile'] ?? '' !!}</div>
+        <div class="hidden md:flex">{!! $payload['content_desktop'] ?? '' !!}</div>
+        @if($payload['zaius_content_id'] ?? null)
             <button type="button" class="ml-4 no-wrap" onclick="loadZaius()">{!! $payload['button'] ?? '' !!}</button>
         @endif
     </div>
@@ -87,7 +87,7 @@
             zaius.dispatch(
                 'web',
                 'showContent', {
-                    contentId: '{{ $payload['zaius_content_id'] }}',
+                    contentId: '{{ $payload['zaius_content_id'] ?? '' }}',
                     target: {
                         selector: '', // empty string for modals
                         position: 'modal' // modal | before | after | inside | replace
