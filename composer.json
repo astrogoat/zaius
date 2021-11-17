@@ -1,6 +1,6 @@
 {
     "name": "astrogoat/zaius",
-    "description": "A Zaius app for Stratum",
+    "description": "A Zaius app for Strata",
     "keywords": [
         "astrogoat",
         "laravel",
@@ -24,7 +24,7 @@
     "require": {
         "php": "^8.0",
         "astrogoat/promobar": "^1.0",
-        "astrogoat/stratum": "dev-develop",
+        "astrogoat/strata": "dev-develop",
         "helix/zaius": "^2.0",
         "illuminate/contracts": "^8.37",
         "spatie/laravel-package-tools": "^1.4.3"
