@@ -24,6 +24,12 @@ class ZaiusServiceProvider extends PackageServiceProvider
                 app()->bind(HelixZaius::class, function () use ($zaiusApp) {
                     return new HelixZaius($zaiusApp->getSettings()->public_key, $zaiusApp->getSettings()->private_key);
                 });
+
+                $this->callAfterResolving('Astrogoat\\Promobar\\Promobar', function ($promobar) use ($zaiusApp) {
+                    if ($zaiusApp->isEnabled()) {
+                        $promobar->addType('zaius', ZaiusType::class);
+                    }
+                });
             });
     }
 
@@ -31,10 +37,6 @@ class ZaiusServiceProvider extends PackageServiceProvider
     {
         $this->callAfterResolving('lego', function (LegoManager $lego) {
             $lego->registerApp(fn (App $app) => $this->registerApp($app));
-        });
-
-        $this->callAfterResolving('Astrogoat\\Promobar\\Promobar', function ($promobar) {
-            $promobar->addType('zaius', ZaiusType::class);
         });
     }
 
