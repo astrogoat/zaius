@@ -9,9 +9,14 @@
         white-space: nowrap;
     }
 
+    @media (min-width: 768px) {
+        .zaius-promobar .md\:justify-center {
+            justify-content: center;
+        }
+    }
 
-    .zaius-promobar .justify-center {
-        justify-content: center;
+    .zaius-promobar .text-center {
+        text-align: center;
     }
 
     .zaius-promobar .zaius-promobar__content {
@@ -70,8 +75,8 @@
 </style>
 
 <div class="zaius-promobar">
-    <div class="zaius-promobar__content container flex @if($payload['center_align_content'] ?? false) justify-center @endif">
-        <div class="flex md:hidden">{!! $payload['content_mobile'] ?? '' !!}</div>
+    <div class="zaius-promobar__content container flex flex-col md:flex-row @if($payload['center_align_content'] ?? false) items-center md:justify-center @endif">
+        <div class="flex md:hidden @if($payload['center_align_content'] ?? false) text-center @endif">{!! $payload['content_mobile'] ?? '' !!}</div>
         <div class="hidden md:flex">{!! $payload['content_desktop'] ?? '' !!}</div>
         @if($payload['zaius_content_id'] ?? null)
             <button type="button" class="ml-4 no-wrap" onclick="loadZaius()">{!! $payload['button'] ?? '' !!}</button>
