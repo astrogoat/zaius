@@ -22,6 +22,13 @@ Add the script include where needed:
 @include('zaius::script')
 ```
 
+### Modals
+You can also open a modal by including 
+```
+@include('zaius::modal')
+``` 
+and open the modal by calling `openZaiusModal(contentId)`.
+
 ## Testing
 
 ```bash
