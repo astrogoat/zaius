@@ -9,6 +9,7 @@ use Helix\Lego\LegoManager;
 use Helix\Zaius\Zaius as HelixZaius;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Helix\Lego\Services\FrontendViews;
 
 class ZaiusServiceProvider extends PackageServiceProvider
 {
@@ -17,6 +18,9 @@ class ZaiusServiceProvider extends PackageServiceProvider
         return $app
             ->name('zaius')
             ->settings(ZaiusSettings::class)
+            ->includeFrontendViews(function (FrontendViews $views ) {
+                $views->addToHead('zaius::script');
+            })
             ->migrations([
                 __DIR__ . '/../database/migrations/settings',
             ])
