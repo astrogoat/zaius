@@ -6,10 +6,10 @@ use Astrogoat\Zaius\Promobar\Types\ZaiusType;
 use Astrogoat\Zaius\Settings\ZaiusSettings;
 use Helix\Lego\Apps\App;
 use Helix\Lego\LegoManager;
+use Helix\Lego\Services\FrontendViews;
 use Helix\Zaius\Zaius as HelixZaius;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Helix\Lego\Services\FrontendViews;
 
 class ZaiusServiceProvider extends PackageServiceProvider
 {
@@ -18,7 +18,7 @@ class ZaiusServiceProvider extends PackageServiceProvider
         return $app
             ->name('zaius')
             ->settings(ZaiusSettings::class)
-            ->includeFrontendViews(function (FrontendViews $views ) {
+            ->includeFrontendViews(function (FrontendViews $views) {
                 $views->addToHead('zaius::script');
             })
             ->migrations([
