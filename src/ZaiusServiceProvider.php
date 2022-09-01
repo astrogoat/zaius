@@ -5,8 +5,8 @@ namespace Astrogoat\Zaius;
 use Astrogoat\Zaius\Promobar\Types\ZaiusType;
 use Astrogoat\Zaius\Settings\ZaiusSettings;
 use Helix\Lego\Apps\App;
+use Helix\Lego\Apps\Services\IncludeFrontendViews;
 use Helix\Lego\LegoManager;
-use Helix\Lego\Services\FrontendViews;
 use Helix\Zaius\Zaius as HelixZaius;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -18,8 +18,8 @@ class ZaiusServiceProvider extends PackageServiceProvider
         return $app
             ->name('zaius')
             ->settings(ZaiusSettings::class)
-            ->includeFrontendViews(function (FrontendViews $views) {
-                $views->addToHead('zaius::script');
+            ->includeFrontendViews(function (IncludeFrontendViews $views) {
+                $views->addToEnd('zaius::script');
             })
             ->migrations([
                 __DIR__ . '/../database/migrations/settings',
@@ -48,6 +48,7 @@ class ZaiusServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('zaius')
-            ->hasViews();
+            ->hasViews()
+            ->hasConfigFile();
     }
 }
