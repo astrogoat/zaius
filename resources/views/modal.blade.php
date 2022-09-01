@@ -1,4 +1,5 @@
 @if(\Astrogoat\Zaius\Settings\ZaiusSettings::isEnabled())
+    <!-- [Zaius] Modal Start -->
     <script>
         function openZaiusModal(contentId) {
             zaius.onload(() => {
@@ -17,4 +18,5 @@
             })
         }
     </script>
+    <!-- [Zaius] Modal End -->
 @endif
