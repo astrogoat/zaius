@@ -19,7 +19,7 @@ class ZaiusServiceProvider extends PackageServiceProvider
             ->name('zaius')
             ->settings(ZaiusSettings::class)
             ->includeFrontendViews(function (IncludeFrontendViews $views) {
-                $views->addToEnd('zaius::script');
+                return $views->addToEnd('zaius::script');
             })
             ->migrations([
                 __DIR__ . '/../database/migrations/settings',
