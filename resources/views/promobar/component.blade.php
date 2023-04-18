@@ -79,7 +79,7 @@
         <div class="flex md:hidden @if($payload['center_align_content'] ?? false) text-center @endif">{!! $payload['content_mobile'] ?? '' !!}</div>
         <div class="hidden md:flex">{!! $payload['content_desktop'] ?? '' !!}</div>
         @if($payload['zaius_content_id'] ?? null)
-            <button type="button" class="ml-4 no-wrap" onclick="openZaiusModal('{{ $payload['zaius_content_id'] ?? '' }}')">{!! $payload['button'] ?? '' !!}</button>
+            <button type="button" class="ml-4 no-wrap promobar-cta" onclick="openZaiusModal('{{ $payload['zaius_content_id'] ?? '' }}')">{!! $payload['button'] ?? '' !!}</button>
         @endif
     </div>
 </div>
