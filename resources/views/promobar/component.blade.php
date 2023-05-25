@@ -9,6 +9,10 @@
         white-space: nowrap;
     }
 
+    .astrogoat_promobar_countdown {
+        margin-left: 10px;
+    }
+
     @media (min-width: 768px) {
         .zaius-promobar .md\:justify-center {
             justify-content: center;
@@ -81,9 +85,7 @@
 
 
         @if($payload['countdown_timer_enabled'] ?? false)
-        <div class="px-2">
             <x-promobar::countdown :payload="$payload" class="astrogoat_promobar_countdown" />
-        </div>
         @endif
 
 
