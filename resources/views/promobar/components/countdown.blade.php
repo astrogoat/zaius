@@ -17,8 +17,6 @@
                 let countDownDate = new Date({{ $endsAt->timestamp }} * 1000).getTime();
                 let timeDistance = countDownDate - new Date().getTime();
 
-
-                console.log(this.timerType);
                 if (timeDistance < 0 ) {
                     clearInterval(runningCounter);
                     return;
