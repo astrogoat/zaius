@@ -86,7 +86,6 @@
                 <span x-text="timer.minutes">{{ $minutes() }}</span> :
                 <span x-text="timer.seconds">{{ $seconds() }}</span>
             @else
-            here
                 {{ $slot }}
             @endif
         </span>
