@@ -39,6 +39,23 @@
         margin-left: 1rem;
     }
 
+    .astrogoat_promobar_countdown {
+        margin-left: 10px;
+    }
+
+    .zaius-promobar .countdown-block{
+        background:  {{ $payload['countdown_timer_block_background_color'] ?? '#FFF' }};;
+        color: {{ $payload['text_color'] ?? '#FFF'  }};
+    }
+
+    .zaius-promobar .block-info{
+        text-align: center;
+    }
+
+    .zaius-promobar .timer-container{
+        padding: 2px 0px;
+    }
+
     @media (min-width: 768px) {
         .zaius-promobar .md\:hidden {
             display: none;

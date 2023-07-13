@@ -101,11 +101,13 @@
     />
 
     <div
+        class="grid grid-cols-2 w-full fab-space-x-4"
         x-cloak
-
-    >
-     <x-fab::forms.select
         x-show="payload.countdown_timer_enabled === true"
+    >
+
+
+     <x-fab::forms.select
         wire:model="payload.countdown_timer_type"
         wire:key="promobar_countdown_timer_type"
         name="payload[countdown_timer_type]"
@@ -114,6 +116,16 @@
         <option value="regular">Regular Countdown</option>
         <option value="24">24 Hours Countdown</option>
     </x-fab::forms.select>
+
+
+    <x-fab::forms.input
+            label="Block Background Color"
+            type="color"
+            wire:model="payload.countdown_timer_block_background_color"
+            wire:key="promobar_countdown_timer_block_background_color"
+    />
+
+
     </div>
 
     <div
