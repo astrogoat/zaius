@@ -41,6 +41,8 @@
 
     .astrogoat_promobar_countdown {
         margin-left: 10px;
+        display: flex;
+        justify-content: start;
     }
 
     .zaius-promobar .countdown-block{
@@ -54,6 +56,10 @@
 
     .zaius-promobar .timer-container{
         padding: 2px 0px;
+    }
+
+    .zaius-promobar .promobar-cta{
+        display: flex;
     }
 
     @media (min-width: 768px) {
@@ -86,6 +92,15 @@
     @media (min-width: 1280px) {
         .zaius-promobar .container {
             max-width: 1280px;
+        }
+
+        .zaius-promobar .timer-container{
+            padding: 2px 0px;
+            margin-top: -4px;
+        }
+
+        .zaius-promobar .md\:justify-center .timer-container{
+            margin-top: 14px;
         }
     }
     @media (min-width: 1536px) {
