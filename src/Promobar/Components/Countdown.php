@@ -13,6 +13,8 @@ class Countdown extends Component
 
     public Carbon $endsAt;
     public ?Carbon $startsAt;
+    public ?string $timerType;
+    public ?string $endsAtTime;
 
     public function __construct(protected array $payload)
     {
@@ -21,6 +23,8 @@ class Countdown extends Component
             ? Carbon::parse($this->payload['countdown_timer_start_date'])
             : null;
         $this->endsAt = Carbon::parse($this->payload['countdown_timer_end_date'] ?? null);
+        $this->timerType = $this->payload['countdown_timer_type'] ?? "";
+        $this->endsAtTime = isset($this->endsAt) ? Carbon::parse($this->endsAt)->format('H:i:s') : "";
     }
 
     public function days(): string
