@@ -15,7 +15,6 @@ class Countdown extends Component
     public ?Carbon $startsAt;
     public ?string $timerType;
     public ?string $endsAtTime;
-    public $bb;
 
     public function __construct(protected array $payload)
     {
