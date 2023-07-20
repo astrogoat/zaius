@@ -46,8 +46,9 @@
     }
 
     .zaius-promobar .countdown-block{
-        background:  {{ $payload['countdown_timer_block_background_color'] ?? '#FFF' }};;
-        color: {{ $payload['text_color'] ?? '#FFF'  }};
+        background: {{ $payload['countdown_timer_block_background_color'] ?? '#FFF' }};
+        color: {{ $payload['text_color'] ?? '#000' }};
+        margin: 0px {{ $payload['countdown_timer_block_padding'] ?? 2 }}px }};
     }
 
     .zaius-promobar .block-info{
@@ -56,6 +57,7 @@
 
     .zaius-promobar .timer-container{
         padding: 2px 0px;
+        text-align: center;
     }
 
     .zaius-promobar .promobar-cta{
