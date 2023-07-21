@@ -107,7 +107,7 @@
     >
 
 
-     <x-fab::forms.select
+    <x-fab::forms.select
         wire:model="payload.countdown_timer_type"
         wire:key="promobar_countdown_timer_type"
         name="payload[countdown_timer_type]"

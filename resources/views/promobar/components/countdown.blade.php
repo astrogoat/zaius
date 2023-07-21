@@ -78,7 +78,6 @@
                         this.timer.seconds = this.formatCounter(Math.floor((timeDistance % (1000 * 60)) / 1000));
                     }, 1000);
 
-
                     daysBlockOne.textContent = String(Math.floor(this.timer.days / 10));
                     daysBlockTwo.textContent = String(this.timer.days % 10);
                     hoursBlockOne.textContent = String(Math.floor(this.timer.hours / 10));
@@ -118,11 +117,11 @@
             </div>
 
             <div class="flex flex-col">
-                    <div class="flex minutes-block gap-1 font-bold">
-                        <span class="countdown-block px-2 rounded-sm" id="minutesBlockOne">-</span>
-                        <span class="countdown-block px-2 rounded-sm" id="minutesBlockTwo">-</span>
-                    </div>
-                    <span class="text-xs font-bold text-center block-info">Mins</span>
+                <div class="flex minutes-block gap-1 font-bold">
+                    <span class="countdown-block px-2 rounded-sm" id="minutesBlockOne">-</span>
+                    <span class="countdown-block px-2 rounded-sm" id="minutesBlockTwo">-</span>
+                </div>
+                <span class="text-xs font-bold text-center block-info">Mins</span>
             </div>
 
             <div class="flex flex-col">
