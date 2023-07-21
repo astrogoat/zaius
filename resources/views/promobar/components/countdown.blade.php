@@ -77,6 +77,16 @@
                         this.timer.minutes = this.formatCounter(Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60)));
                         this.timer.seconds = this.formatCounter(Math.floor((timeDistance % (1000 * 60)) / 1000));
                     }, 1000);
+
+
+                    daysBlockOne.textContent = String(Math.floor(this.timer.days / 10));
+                    daysBlockTwo.textContent = String(this.timer.days % 10);
+                    hoursBlockOne.textContent = String(Math.floor(this.timer.hours / 10));
+                    hoursBlockTwo.textContent = String(this.timer.hours % 10);
+                    minutesBlockOne.textContent = String(Math.floor(this.timer.minutes / 10));
+                    minutesBlockTwo.textContent = String(this.timer.minutes % 10);
+                    secondsBlockOne.textContent = String(Math.floor(this.timer.seconds / 10));
+                    secondsBlockTwo.textContent = String(this.timer.seconds % 10);
                 }
             },
             formatCounter: function (number) {
