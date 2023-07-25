@@ -9,7 +9,7 @@
         white-space: nowrap;
     }
 
-    .astrogoat_promobar_countdown {
+    .zaius_promobar_countdown {
         margin-left: 10px;
     }
 
@@ -39,25 +39,49 @@
         margin-left: 1rem;
     }
 
-    .astrogoat_promobar_countdown {
+    .zaius_promobar_countdown {
         margin-left: 10px;
         display: flex;
         justify-content: start;
     }
 
-    .zaius-promobar .countdown-block{
+    .zaius-promobar .countdown-block {
+        padding: 0 0.5rem;
+        border-radius: 0.125rem;
+        width: 1.56rem;
         background: {{ $payload['countdown_timer_block_background_color'] ?? '#FFF' }};
         color: {{ $payload['text_color'] ?? '#000' }};
         margin: 0px {{ $payload['countdown_timer_block_padding'] ?? 2 }}px }};
     }
 
-    .zaius-promobar .block-info{
+    .zaius-promobar .block-info {
         text-align: center;
+        font-weight: bold;
+    }
+
+    .zaius-promobar .text-xs {
+        font-size: 0.75rem;
+        line-height: 1rem;
+    }
+
+    .zaius-promobar .font-bold{
+        font-weight: bold;
     }
 
     .zaius-promobar .timer-container{
         padding: 2px 0px;
         text-align: center;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .zaius-promobar .seconds-block,
+    .zaius-promobar .minutes-block,
+    .zaius-promobar .months-block,
+    .zaius-promobar .days-block{
+        font-weight: bold;
+        display: flex;
+        gap: 0.25rem;
     }
 
     .zaius-promobar .promobar-cta{
@@ -118,7 +142,7 @@
         <div class="hidden md:flex">{!! $payload['content_desktop'] ?? '' !!}</div>
 
         @if($payload['countdown_timer_enabled'] ?? false)
-            <x-promobar::countdown :payload="$payload" class="astrogoat_promobar_countdown" />
+            <x-promobar::countdown :payload="$payload" class="zaius_promobar_countdown" />
         @endif
 
         @if($payload['zaius_content_id'] ?? null)
