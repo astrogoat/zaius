@@ -33,9 +33,6 @@ jobs:
         id: bump-version
         run: echo "version=$(npm version ${{ inputs.level }} --tag-version-prefix=)" >> $GITHUB_OUTPUT
 
-      - name: Commit changes
-        run: git add package.json && git commit -m "Bump version to ${{ steps.bump-version.outputs.version }}"
-
       - name: Push new branch
         run: git push origin main
 
