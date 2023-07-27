@@ -29,12 +29,9 @@ jobs:
           git config user.name "Miles Bot"
           git config user.email noreply@3zbrands.com
 
-      - name: Set NPM config
-        run: npm config set tag-version-prefix ''
-
       - name: Bump version
         id: bump-version
-        run: echo "version=$(npm version ${{ inputs.level }})" >> $GITHUB_OUTPUT
+        run: echo "version=$(npm version ${{ inputs.level }} --tag-version-prefix=)" >> $GITHUB_OUTPUT
 
       - name: Create release branch
         run: git checkout -b release/${{ steps.bump-version.outputs.version }}
