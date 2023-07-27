@@ -1,5 +1,5 @@
 @if($timerIsRunning())
-    <span
+    <div
         x-data="{
             timer: {
                 days: '{{ $days() }}',
@@ -40,6 +40,20 @@
                         this.timer.minutes = this.formatCounter(Math.floor((tomorrowEndTimeDistance % (1000 * 60 * 60)) / (1000 * 60)));
                         this.timer.seconds = this.formatCounter(Math.floor((tomorrowEndTimeDistance % (1000 * 60)) / 1000));
 
+                        this.timer.days = this.formatCounter(Math.floor(tomorrowEndTimeDistance / (1000 * 60 * 60 * 24)));
+                        this.timer.hours = this.formatCounter(Math.floor((tomorrowEndTimeDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+                        this.timer.minutes = this.formatCounter(Math.floor((tomorrowEndTimeDistance % (1000 * 60 * 60)) / (1000 * 60)));
+                        this.timer.seconds = this.formatCounter(Math.floor((tomorrowEndTimeDistance % (1000 * 60)) / 1000));
+
+                        daysBlockOne.textContent = String(Math.floor(this.timer.days / 10));
+                        daysBlockTwo.textContent = String(this.timer.days % 10);
+                        hoursBlockOne.textContent = String(Math.floor(this.timer.hours / 10));
+                        hoursBlockTwo.textContent = String(this.timer.hours % 10);
+                        minutesBlockOne.textContent = String(Math.floor(this.timer.minutes / 10));
+                        minutesBlockTwo.textContent = String(this.timer.minutes % 10);
+                        secondsBlockOne.textContent = String(Math.floor(this.timer.seconds / 10));
+                        secondsBlockTwo.textContent = String(this.timer.seconds % 10);
+
                         function resetCounter() {
                             const now = new Date();
                             const endTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes, seconds);
@@ -63,6 +77,15 @@
                         this.timer.minutes = this.formatCounter(Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60)));
                         this.timer.seconds = this.formatCounter(Math.floor((timeDistance % (1000 * 60)) / 1000));
                     }, 1000);
+
+                    daysBlockOne.textContent = String(Math.floor(this.timer.days / 10));
+                    daysBlockTwo.textContent = String(this.timer.days % 10);
+                    hoursBlockOne.textContent = String(Math.floor(this.timer.hours / 10));
+                    hoursBlockTwo.textContent = String(this.timer.hours % 10);
+                    minutesBlockOne.textContent = String(Math.floor(this.timer.minutes / 10));
+                    minutesBlockTwo.textContent = String(this.timer.minutes % 10);
+                    secondsBlockOne.textContent = String(Math.floor(this.timer.seconds / 10));
+                    secondsBlockTwo.textContent = String(this.timer.seconds % 10);
                 }
             },
             formatCounter: function (number) {
@@ -75,15 +98,42 @@
         x-init="startCounter()"
         {{ $attributes }}
     >
-        <span x-show="timerIsRunning">
+        <div class="flex timer-container" x-show="timerIsRunning">
             @if ($slot->isEmpty())
-                <span x-text="timer.days">{{ $days() }}</span> :
-                <span x-text="timer.hours">{{ $hours() }}</span> :
-                <span x-text="timer.minutes">{{ $minutes() }}</span> :
-                <span x-text="timer.seconds">{{ $seconds() }}</span>
+            <div class="flex flex-col" x-show="timerType === 'regular'">
+                <div class="flex days-block">
+                    <span class="countdown-block" id="daysBlockOne">-</span>
+                    <span class="countdown-block" id="daysBlockTwo">-</span>
+                </div>
+                <span class="text-xs font-bold block-info">Days</span>
+            </div>
+
+            <div class="flex flex-col">
+                <div class="flex months-block">
+                    <span class="countdown-block" id="hoursBlockOne">-</span>
+                    <span class="countdown-block" id="hoursBlockTwo">-</span>
+                </div>
+                <span class="text-xs font-bold block-info">Hours</span>
+            </div>
+
+            <div class="flex flex-col">
+                <div class="flex minutes-block">
+                    <span class="countdown-block" id="minutesBlockOne">-</span>
+                    <span class="countdown-block" id="minutesBlockTwo">-</span>
+                </div>
+                <span class="text-xs font-bold block-info">Mins</span>
+            </div>
+
+            <div class="flex flex-col">
+                <div class="flex seconds-block">
+                    <span class="countdown-block" id="secondsBlockOne">-</span>
+                    <span class="countdown-block" id="secondsBlockTwo">-</span>
+                </div>
+                <span class="text-xs font-bold block-info">Secs</span>
+            </div>
             @else
                 {{ $slot }}
             @endif
-        </span>
-    </span>
+        </div>
+    </div>
 @endif
