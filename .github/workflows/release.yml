@@ -1,4 +1,4 @@
-name: release
+name: Release new version
 
 on:
   workflow_dispatch:
@@ -33,14 +33,13 @@ jobs:
         id: bump-version
         run: echo "version=$(npm version ${{ inputs.level }} --tag-version-prefix=)" >> $GITHUB_OUTPUT
 
-      - name: Create release branch
-        run: git checkout -b release/${{ steps.bump-version.outputs.version }}
+      - name: Commit changes
+        run: git commit -m "Bump version to ${{ steps.bump-version.outputs.version }}"
 
       - name: Push new branch
-        run: git push origin release/${{ steps.bump-version.outputs.version }}
+        run: git push origin main
 
-      - name: Create pull request
-        run: |
-          gh pr create --head "release/${{ steps.bump-version.outputs.version }}" --base "main" --title "Release ${{ steps.bump-version.outputs.version }}" --body "Release candidate ${{ steps.bump-version.outputs.version }}" --reviewer ${{ github.actor }} --reviewer "tonning" --assignee "tonning"
+      - name: Create new release
+        run: gh release create ${{ steps.bump-version.outputs.version }} --generate-notes --latest
         env:
           GITHUB_TOKEN: ${{ secrets.MILES_BOT_TOKEN }}
