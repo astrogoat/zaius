@@ -1,0 +1,49 @@
+name: release
+
+on:
+  workflow_dispatch:
+    inputs:
+      level:
+        description: 'Semantic level bump'
+        required: true
+        default: 'minor'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+
+jobs:
+  bump:
+    name: Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # In order to make a commit, we need to initialize a user.
+      # You may choose to write something less generic here if you want, it doesn't matter functionality wise.
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "Miles Bot"
+          git config user.email noreply@3zbrands.com
+
+      - name: Set NPM config
+        run: npm config set tag-version-prefix ''
+
+      - name: Bump version
+        id: bump-version
+        run: echo "version=$(npm version ${{ inputs.level }})" >> $GITHUB_OUTPUT
+
+      - name: Create release branch
+        run: git checkout -b release/${{ steps.bump-version.outputs.version }}
+
+      - name: Push new branch
+        run: git push origin release/${{ steps.bump-version.outputs.version }}
+
+      - name: Create pull request
+        run: |
+          gh pr create --head "release/${{ steps.bump-version.outputs.version }}" --base "main" --title "Release ${{ steps.bump-version.outputs.version }}" --body "Release candidate ${{ steps.bump-version.outputs.version }}" --reviewer ${{ github.actor }} --reviewer "tonning" --assignee "tonning"
+        env:
+          GITHUB_TOKEN: ${{ secrets.MILES_BOT_TOKEN }}
