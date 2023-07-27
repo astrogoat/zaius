@@ -35,8 +35,11 @@ jobs:
         id: bump-version
         run: echo "version=$(npm version ${{ inputs.level }} --tag-version-prefix=)" >> $GITHUB_OUTPUT
 
-      - name: Push new branch
+      - name: Push changes
         run: git push origin main
+
+      - name: Push tag
+        run: git push origin ${{ steps.bump-version.outputs.version }}
 
       - name: Create new release
         run: gh release create ${{ steps.bump-version.outputs.version }} --generate-notes --latest
