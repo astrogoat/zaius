@@ -101,11 +101,13 @@
     />
 
     <div
+        class="grid grid-cols-2 w-full fab-space-x-4"
         x-cloak
-
-    >
-     <x-fab::forms.select
         x-show="payload.countdown_timer_enabled === true"
+    >
+
+
+    <x-fab::forms.select
         wire:model="payload.countdown_timer_type"
         wire:key="promobar_countdown_timer_type"
         name="payload[countdown_timer_type]"
@@ -114,6 +116,7 @@
         <option value="regular">Regular Countdown</option>
         <option value="24">24 Hours Countdown</option>
     </x-fab::forms.select>
+
     </div>
 
     <div
@@ -147,6 +150,30 @@
     </div>
 </div>
 
+
+ <div
+    class="grid grid-cols-2 w-full gap-4 mt-4 p-2"
+    x-cloak
+    x-show="payload.countdown_timer_enabled === true"
+ >
+        <x-fab::forms.input
+            label="Block Background Color"
+            type="color"
+            wire:model="payload.countdown_timer_block_background_color"
+            wire:key="promobar_countdown_timer_block_background_color"
+        />
+
+        <x-fab::forms.range
+            label="Block L & R Padding"
+            min="0"
+            max="2"
+            name="payload['countdown_timer_block_padding']"
+            wire:model="payload.countdown_timer_block_padding"
+            wire:key="promobar_countdown_timer_block_padding"
+            placeholder="2"
+            trailing="px"
+        />
+</div>
 <x-fab::forms.input
     class="mt-6"
     label="Zaius content ID"

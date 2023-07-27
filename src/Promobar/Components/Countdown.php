@@ -63,6 +63,6 @@ class Countdown extends Component
 
     public function render()
     {
-        return view('promobar::components.countdown');
+        return view('zaius::components.countdown');
     }
 }
