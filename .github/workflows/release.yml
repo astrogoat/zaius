@@ -22,15 +22,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-          token: ${{ secrets.MILES_BOT_TOKEN }}
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
 
       # In order to make a commit, we need to initialize a user.
       # You may choose to write something less generic here if you want, it doesn't matter functionality wise.
       - name: Initialize mandatory git config
         run: |
           git config user.name "Miles Bot"
-          git config user.email noreply@3zbrands.com
+          git config user.email "miles@helixsleep.com"
 
       - name: Bump version
         id: bump-version
