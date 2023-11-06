@@ -104,10 +104,18 @@
         .zaius-promobar .container {
             max-width: 640px;
         }
+
+        .zaius-promobar .promobar-cta{
+            margin-left: 0px;
+        }
     }
     @media (min-width: 768px) {
         .zaius-promobar .container {
             max-width: 768px;
+        }
+
+        .zaius-promobar .promobar-cta{
+            margin-left: 1rem;
         }
     }
     @media (min-width: 1024px) {
@@ -146,7 +154,7 @@
         @endif
 
         @if($payload['zaius_content_id'] ?? null)
-            <button type="button" class="ml-4 no-wrap promobar-cta" onclick="openZaiusModal('{{ $payload['zaius_content_id'] ?? '' }}')">{!! $payload['button'] ?? '' !!}</button>
+            <button type="button" class="no-wrap promobar-cta" onclick="openZaiusModal('{{ $payload['zaius_content_id'] ?? '' }}')">{!! $payload['button'] ?? '' !!}</button>
         @endif
     </div>
 </div>
