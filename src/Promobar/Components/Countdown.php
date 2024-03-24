@@ -1,6 +1,6 @@
 <?php
 
-namespace Astrogoat\Promobar\View\Components;
+namespace Astrogoat\Zaius\View\Components;
 
 use DateInterval;
 use Illuminate\Support\Carbon;
