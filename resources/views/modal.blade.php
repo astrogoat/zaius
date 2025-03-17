@@ -11,7 +11,7 @@
                         contentId: contentId,
                         target: {
                             selector: '',  // empty string for modals
-                            position: '{{ $position ?? 'modal' }}' // modal | before | after | inside | replace
+                            position: '{{ 'modal' }}' // modal | before | after | inside | replace
                         }
                     }
                 );
